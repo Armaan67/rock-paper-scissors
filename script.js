@@ -20,7 +20,7 @@ function getHumanChoice() {
         } else if (humanChoice.toUpperCase() === "SCISSORS") {
             return "Scissors"
         } else {
-            console.log("Enter a valid choice!")
+            alert("Enter a valid choice!")
             humanChoice = prompt("Rock, paper, or scissors? ")
         }
     } 
@@ -41,16 +41,18 @@ function playGame() {
         compChoice = compChoice.toLowerCase();
         humanChoice = humanChoice.toLowerCase();
         if (humanChoice === compChoice) {
-            console.log(`Tie. You both chose ${compChoice}.`);
-            humanScore++;
-            computerScore++;
+            
+            alert(`You tied this round! You both chose ${compChoice}. Score: ${humanScore}-${computerScore}`);
+
 
         } else if ((humanChoice === "rock" && compChoice === "scissors") || (humanChoice === "paper" && compChoice === "rock") || (humanChoice === "scissors" && compChoice === "paper")) {
-            console.log(`You win! ${humanChoice} beats ${compChoice}.`);
             humanScore++;
+            alert(`You won this round! ${humanChoice} beats ${compChoice}. Score: ${humanScore}-${computerScore}`);
+
         }  else {
-            console.log(`You lose. ${compChoice} beats ${humanChoice}.`);
             computerScore++;
+            alert(`You lost this round! ${compChoice} beats ${humanChoice}. Score: ${humanScore}-${computerScore}`);
+
         }
 
     } 
@@ -63,9 +65,11 @@ function playGame() {
     }
 
     if (humanScore>computerScore) {
-        console.log(`Congrats! You won! Score: ${humanScore}-${computerScore}`)
+        alert(`Congrats! You won! Score: ${humanScore}-${computerScore}. Refresh to play again.`)
+    } else if (humanScore<computerScore){
+        alert(`Sorry! You lost! Score: ${humanScore}-${computerScore}. Refresh to try again.`)
     } else {
-        console.log(`Sorry! You lost! Score: ${humanScore}-${computerScore}`)
+        alert(`You tied! Score: ${humanScore}-${computerScore}. Refresh to try again.`)
     }
 
 
