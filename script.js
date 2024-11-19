@@ -28,3 +28,49 @@ function getHumanChoice() {
 
 let humanScore = 0;
 let computerScore = 0;
+
+
+
+
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+    rounds = 1;
+
+    function playRound(humanChoice, compChoice) {
+        compChoice = compChoice.toLowerCase();
+        humanChoice = humanChoice.toLowerCase();
+        if (humanChoice === compChoice) {
+            console.log(`Tie. You both chose ${compChoice}.`);
+            humanScore++;
+            computerScore++;
+
+        } else if ((humanChoice === "rock" && compChoice === "scissors") || (humanChoice === "paper" && compChoice === "rock") || (humanChoice === "scissors" && compChoice === "paper")) {
+            console.log(`You win! ${humanChoice} beats ${compChoice}.`);
+            humanScore++;
+        }  else {
+            console.log(`You lose. ${compChoice} beats ${humanChoice}.`);
+            computerScore++;
+        }
+
+    } 
+
+    while (rounds<=5) {
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection)
+        rounds++;
+    }
+
+    if (humanScore>computerScore) {
+        console.log(`Congrats! You won! Score: ${humanScore}-${computerScore}`)
+    } else {
+        console.log(`Sorry! You lost! Score: ${humanScore}-${computerScore}`)
+    }
+
+
+}
+
+
+
+playGame();
